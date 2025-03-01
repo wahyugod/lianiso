@@ -147,6 +147,20 @@
       slider.addEventListener("pointerdown", startDrag);
       document.addEventListener("pointerup", stopDrag);
       document.addEventListener("pointermove", onDrag);
+
+      // Tambahkan dukungan sentuhan untuk perangkat mobile
+      slider.addEventListener("touchstart", (e) => {
+        isDragging = true;
+        e.preventDefault();
+      });
+      document.addEventListener("touchend", () => {
+        isDragging = false;
+      });
+      document.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        let clientX = e.touches[0].clientX;
+        moveSlider(clientX);
+      });
     </script>
   </body>
 </html>
