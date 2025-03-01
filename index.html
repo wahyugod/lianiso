@@ -42,7 +42,7 @@
       .image-wrapper {
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         width: 100%;
         height: 100%;
         pointer-events: none;
@@ -55,7 +55,7 @@
       .after {
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         width: 0%;
         height: 100%;
         overflow: hidden;
@@ -63,7 +63,7 @@
       .slider {
         position: absolute;
         top: 0;
-        left: 50%;
+        right: 50%;
         width: 4px;
         height: 100%;
         background: white;
@@ -113,15 +113,15 @@
       const desc = document.getElementById("desc");
 
       let isDragging = false;
-      const margin = 20; // Beri sedikit ruang di sisi kanan agar slider tidak mentok
+      const margin = 20; // Beri sedikit ruang di sisi kiri agar slider tidak mentok
 
       const moveSlider = (xPosition) => {
         let rect = container.getBoundingClientRect();
-        let offsetX = xPosition - rect.left;
+        let offsetX = rect.right - xPosition;
         if (offsetX < margin) offsetX = margin;
         if (offsetX > rect.width - margin) offsetX = rect.width - margin;
 
-        slider.style.left = `${offsetX}px`;
+        slider.style.right = `${offsetX}px`;
         after.style.width = `${offsetX}px`;
 
         // Ubah deskripsi berdasarkan posisi slider
