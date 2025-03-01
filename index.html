@@ -42,7 +42,7 @@
       .image-wrapper {
         position: absolute;
         top: 0;
-        right: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         pointer-events: none;
@@ -55,15 +55,15 @@
       .after {
         position: absolute;
         top: 0;
-        right: 0;
-        width: 100%;
+        left: 0;
+        width: 0%;
         height: 100%;
         overflow: hidden;
       }
       .slider {
         position: absolute;
         top: 0;
-        right: 10px;
+        left: 10px;
         width: 4px;
         height: 100%;
         background: white;
@@ -116,17 +116,17 @@
       const margin = 10; // Batasi agar slider tidak mentok ke kanan atau kiri
 
       // Atur slider awal agar foto before penuh
-      after.style.width = "100%";
-      slider.style.right = "10px";
+      after.style.width = "0%";
+      slider.style.left = "10px";
       desc.textContent = "Ireng Cik";
 
       const moveSlider = (xPosition) => {
         let rect = container.getBoundingClientRect();
-        let offsetX = rect.right - xPosition;
+        let offsetX = xPosition - rect.left;
         if (offsetX < margin) offsetX = margin;
         if (offsetX > rect.width - margin) offsetX = rect.width - margin;
 
-        slider.style.right = `${offsetX}px`;
+        slider.style.left = `${offsetX}px`;
         after.style.width = `${offsetX}px`;
 
         // Ubah deskripsi berdasarkan posisi slider
