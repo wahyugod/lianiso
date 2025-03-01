@@ -56,7 +56,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: 0%;
+        width: 100%;
         height: 100%;
         overflow: hidden;
       }
@@ -114,6 +114,11 @@
 
       let isDragging = false;
       const margin = 10; // Batasi agar slider tidak mentok ke kanan atau kiri
+
+      // Atur slider awal agar foto before penuh
+      after.style.width = "100%";
+      slider.style.right = "10px";
+      desc.textContent = "Ireng Cik";
 
       const moveSlider = (xPosition) => {
         let rect = container.getBoundingClientRect();
