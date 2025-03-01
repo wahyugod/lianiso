@@ -63,7 +63,7 @@
       .slider {
         position: absolute;
         top: 0;
-        right: 50%;
+        right: 0;
         width: 4px;
         height: 100%;
         background: white;
@@ -119,7 +119,7 @@
         let rect = container.getBoundingClientRect();
         let offsetX = rect.right - xPosition;
         if (offsetX < margin) offsetX = margin;
-        if (offsetX > rect.width - margin) offsetX = rect.width - margin;
+        if (offsetX > rect.width) offsetX = rect.width;
 
         slider.style.right = `${offsetX}px`;
         after.style.width = `${offsetX}px`;
