@@ -1,171 +1,24 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lian Bilek</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
-
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        height: 100vh;
-        margin: 0;
-        background: #121212;
-        color: white;
-        user-select: none;
-        font-family: "Inter", sans-serif;
-      }
-      .nav {
-        width: 100%;
-        text-align: center;
-        font-size: 20px;
-        font-weight: 600;
-        padding: 10px 0;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        background: transparent;
-      }
-      .container {
-        position: relative;
-        width: 80vw;
-        max-width: 500px;
-        height: 80vw;
-        max-height: 500px;
-        overflow: hidden;
-        border: 4px solid #333;
-        box-sizing: border-box;
-        margin-top: 20px;
-      }
-      .image-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      }
-      .image-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 100%;
-        overflow: hidden;
-      }
-      .slider {
-        position: absolute;
-        top: 0;
-        left: 0px;
-        width: 4px;
-        height: 100%;
-        background: white;
-        cursor: ew-resize;
-        z-index: 10;
-      }
-      .description {
-        margin-top: 20px;
-        text-align: center;
-        font-size: 18px;
-        font-weight: 600;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 10px;
-        border-radius: 5px;
-        display: inline-block;
-      }
-      @media (max-width: 600px) {
-        .container {
-          width: 90vw;
-          height: 90vw;
-          max-width: 300px;
-          max-height: 300px;
-        }
-        .description {
-          font-size: 14px;
-          padding: 6px;
-        }
-      }
-    </style>
+    <title>KING DWIKI</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="nav">Lian Before After ISO</div>
-    <div class="container">
-      <div class="image-wrapper">
-        <img src="assets/before.png" alt="Before" />
-      </div>
-      <div class="image-wrapper after">
-        <img src="assets/after.png" alt="After" />
-      </div>
-      <div class="slider"></div>
+    <h1>KING DWIKI</h1>
+    <div class="photo">
+      <img id="mainImage" src="day.jpg" alt="Pemandangan Siang" />
     </div>
-    <div class="description" id="desc">Ireng Cik</div>
-    <script>
-      const slider = document.querySelector(".slider");
-      const after = document.querySelector(".after");
-      const container = document.querySelector(".container");
-      const desc = document.getElementById("desc");
-
-      let isDragging = false;
-      const margin = 10; // Batasi agar slider tidak mentok ke kanan atau kiri
-
-      // Atur slider awal agar foto before penuh
-      after.style.width = "0%";
-      slider.style.left = "0px";
-      desc.textContent = "Ireng Cik";
-
-      const moveSlider = (xPosition) => {
-        let rect = container.getBoundingClientRect();
-        let offsetX = xPosition - rect.left;
-        if (offsetX < margin) offsetX = margin;
-        if (offsetX > rect.width - margin) offsetX = rect.width - margin;
-
-        slider.style.left = `${offsetX}px`;
-        after.style.width = `${offsetX}px`;
-
-        // Ubah deskripsi berdasarkan posisi slider
-        let percentage = offsetX / rect.width;
-        desc.textContent = percentage > 0.5 ? "Beyklin Lek" : "Ireng Cik";
-      };
-
-      const startDrag = (e) => {
-        isDragging = true;
-        e.preventDefault();
-      };
-
-      const stopDrag = () => {
-        isDragging = false;
-      };
-
-      const onDrag = (e) => {
-        if (!isDragging) return;
-        let clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        moveSlider(clientX);
-      };
-
-      slider.addEventListener("pointerdown", startDrag);
-      document.addEventListener("pointerup", stopDrag);
-      document.addEventListener("pointermove", onDrag);
-
-      // Tambahkan dukungan sentuhan untuk perangkat mobile
-      slider.addEventListener("touchstart", (e) => {
-        isDragging = true;
-        e.preventDefault();
-      });
-      document.addEventListener("touchend", () => {
-        isDragging = false;
-      });
-      document.addEventListener("touchmove", (e) => {
-        if (!isDragging) return;
-        let clientX = e.touches[0].clientX;
-        moveSlider(clientX);
-      });
-    </script>
+    <div class="toggle">
+      <input type="checkbox" id="modeToggle" />
+      <label for="modeToggle">
+        <img src="assets/day.png" class="icon" alt="Siang" />
+        <img src="assets/night.png" class="icon" alt="Malam" />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

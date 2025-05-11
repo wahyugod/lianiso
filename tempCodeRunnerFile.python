@@ -1,0 +1,26 @@
+# def cek_pythagoras(a, b, c):
+#     if c**2 == a**2 + b**2:
+#         return f"Bilangan {a}, {b}, {c} merupakan triple Pythagoras."
+#     else:
+#         return f"Bilangan {a}, {b}, {c} bukan triple Pythagoras."
+
+# a = int(input("Masukkan nilai a: "))
+# b = int(input("Masukkan nilai b: "))
+# c = int(input("Masukkan nilai c: "))
+
+# print(cek_pythagoras(a,b,c))
+
+
+
+def pangkat(a, b):
+    if b == 0:
+        return 1
+    elif b < 0:
+        return 1 / pangkat(a, -b)
+    else:
+        return a * pangkat(a, b - 1)
+
+a = int(input("Masukkan bilangan: "))
+b = int(input("Masukkan pangkat: "))
+
+print(f"Hasil {a}^{b} adalah {pangkat(a, b)}")
