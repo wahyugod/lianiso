@@ -8,21 +8,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  justify-content: start;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #fff;
+  background-color: #e2dfdf;
   transition: background-color 0.5s;
+  padding-bottom: 100px;
 }
 
 body.night {
-  background-color: #000;
+  background-color: #131313;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 4rem;
   color: #000;
-  margin-bottom: 1rem;
+  margin-top: 9rem;
+  margin-bottom: 4rem;
   transition: color 0.5s;
   font-family: "Tagesschrift", cursive;
 }
@@ -32,8 +34,8 @@ body.night h1 {
 }
 
 .photo {
-  width: 350px;
-  height: 280px;
+  width: 400px;
+  height: 360px;
   overflow: hidden;
   border-radius: 15px;
   margin-bottom: 2rem;
@@ -100,4 +102,93 @@ body.night label {
 body.night .slider {
   left: calc(100% - 80px);
   background-color: #003c78;
+}
+
+.info-section {
+  margin-top: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 1700px;
+  margin-top: 100px;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  color: #000;
+}
+
+.card .line {
+  margin: 50px auto;
+  width: 95%;
+  height: 10px;
+  background-color: #000;
+}
+
+.card.evil .line {
+  background-color: #000000;
+}
+
+.card .content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.card img {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card .text {
+  max-width: 50%;
+  font-family: "Quicksand", sans-serif;
+}
+
+.card .text h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-family: "Tagesschrift", cursive;
+  text-align: center;
+}
+
+.card .text p {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.card.kind {
+  background-color: transparent;
+  color: #000;
+}
+
+.card.evil {
+  background-color: transparent;
+  color: #000000;
+}
+
+body.night .card.evil {
+  color: #fff;
+}
+
+body.night .card.kind {
+  color: #fff;
+}
+
+body.night .card .line {
+  background-color: #fff;
 }
